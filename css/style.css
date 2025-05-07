@@ -478,3 +478,24 @@ header .menu ul {
 .label-cont button {
  width: min-content;
 }
+.arrow-prev, .arrow-next { display: none }
+@media (max-width: 991px) {
+  .content-form_left {
+    height: 497px;
+  }
+  #form form {
+    width: 100%;
+}
+  .content-form {
+    flex-direction: column;
+    gap: 80px;
+  }
+  .content-form_left {
+    width: 100%;
+    align-content: center;
+  }
+  .service_card {
+    margin-top: 0px;
+  }
+  
+}
