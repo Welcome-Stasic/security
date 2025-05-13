@@ -739,3 +739,11 @@ footer ul:last-child {
   }
   
 }
+/* регистрация */
+#registration {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #1c1b1b;
+}
