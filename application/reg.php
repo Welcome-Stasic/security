@@ -59,38 +59,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
         <?//include('../patch/header.php');?>
         <section id="registration">
             <div class="container">
+                <div class="content-form-reg">
         <h1>Регистрация</h1>
-        <form action="#" method="POST">
-            <label for="username">Логин</label><br>
-            <input type="text" name="username"><br>
+        <form action="reg.php" method="POST">
+            <div class="label-content">
+                <label>Логин</label>
+                <input class="input" type="text" name="username">
             <?php if ($username === null) {
-                echo "<span style='color: red; font-size: 12px;'>Заполните поле</span><br>";
+                echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 50px;'>Заполните поле</span><br>";
             }
             ?>
-
-            <label for="email">E-mail</label><br>
-            <input type="email" name="email"><br>
+            </div>
+            <div class="label-content">
+                <label for="email">E-mail</label>
+                <input class="input" type="email" name="email">
             <?php if ($email === null) {
-                echo "<span style='color: red; font-size: 12px;'>Заполните поле</span><br>";
+                echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 50px;'>Заполните поле</span><br>";
             }
             ?>
-
-            <label for="password">Пароль</label><br>
-            <input type="password" name="password"><br>
+            </div>
+            <div class="label-content">
+                <label for="password">Пароль</label>
+                <input class="input" type="password" name="password">
             <?php if ($password === null) {
-                echo "<span style='color: red; font-size: 12px;'>Заполните поле</span><br>";
+                echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 50px;'>Заполните поле</span><br>";
             }
             ?>
-
-            <label for="prevPassword">Подтверждение пароля</label><br>
-            <input type="password" name="prevPassword"><br>
+            </div>
+            <div class="label-content">
+                <label for="prevPassword">Подтверждение пароля</label>
+                <input class="input mb-5" type="password" name="prevPassword">
             <?php if ($prevPssword === null) {
-                echo "<span style='color: red; font-size: 12px;'>Заполните поле</span><br>";
+                echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 50px;'>Заполните поле</span><br>";
             }
             ?>
-            <input type="submit">
-            <span>Есть аккаунт? <a href="auth.php">войти</a></span>
+            </div>
+            <button>Зарегистрироваться</button>
         </form>
+        <span>Есть аккаунт? <a href="auth.php">войти</a></span>
+        </div>
         </div>
         </section>
         <?//include('../patch/footer.php');?>

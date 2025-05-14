@@ -13,7 +13,7 @@
                         <?if ($_SESSION['auth'] == true):?>
                             <li><a href="lk.php">Личный кабинет</a></li>
                             <?else:?>
-                            <li><a href="application/reg.php">Войти</a></li>
+                            <li><a href="application/auth.php">Войти</a></li>
                         <?endif;?>
                     </ul>
                 </nav>

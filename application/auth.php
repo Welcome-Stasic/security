@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
     $username = !empty($_POST['username']) ? $conn->real_escape_string(trim($_POST['username'])) : null;
     $password = !empty($_POST['password']) ? $conn->real_escape_string(trim($_POST['password'])) : null;
     if ($username && $password) {
-        $check_name = $conn->prepare("SELECT * FROM users WHERE name = '?'");
+        $check_name = $conn->prepare("SELECT * FROM users WHERE name = ?");
         $check_name->bind_paran('s', $username);
         $check_name->execute();
         $result = $check_name->get_result();
@@ -46,23 +46,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
         <?//include('../patch/header.php');?>
         <section id="registration">
             <div class="container">
+            <div class="content-form-reg">
         <h1>Авторизация</h1>
-        <form action="#" method="POST">
-            <label for="username">Логин</label><br>
-            <input type="text" name="username"><br>
+        <form action="auth.php" method="POST">
+        <div class="label-content">
+            <label for="username">Логин</label>
+            <input class="input" type="text" name="username">
             <?php if ($username === null) {
-                echo "<span style='color: red; font-size: 12px;'>Заполните поле</span><br>";
+                echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 50px;'>Заполните поле</span><br>";
             }
             ?>
-            <label for="password">Пароль</label><br>
-            <input type="password" name="password"><br>
+        </div>
+        <div class="label-content">
+            <label for="password">Пароль</label>
+            <input class="input" type="password" name="password">
             <?php if ($password === null) {
-                echo "<span style='color: red; font-size: 12px;'>Заполните поле</span><br>";
+                echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 50px;'>Заполните поле</span><br>";
             }
             ?>
-            <input type="submit">
-            <span>Нет аккаунта? <a href="reg.php">создать</a></span>
+        </div>
+            <button>Войти</button>
         </form>
+        <span>Нет аккаунта? <a href="reg.php">создать</a></span>
+            </div>
         </div>
         </section>
         <?//include('../patch/footer.php');?>
