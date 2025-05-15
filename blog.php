@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="slick-rep/slick/slick-theme.css" />
     <link rel="stylesheet" href="slick-rep/slick/slick.css" />
 </head>
+
 <body>
-<?include('patch/header.php');?>
+    <? include('patch/header.php'); ?>
     <main>
         <section id="main">
             <div class="container">
@@ -132,7 +133,7 @@
                                 <div class="expert_acatar">
                                     <img src="assets/1 avatar.jpg"
                                         alt="Карточка" />
-                                    </div>
+                                </div>
                                 <span>Александр Беляков</span>
                                 <span>Старший охранник с более чем 10-летним опытом работы в сфере безопасности. Специалист по тактическому планированию и оперативному реагированию на угрозы.
                                     Отличается быстрой реакцией, высокой физической подготовкой </span>
@@ -144,7 +145,7 @@
                                     <div class="expert_acatar">
                                         <img src="assets/2 acatar.jpg"
                                             alt="Карточка" />
-                                        </div>
+                                    </div>
                                 </div>
                                 <span>Филип Копылов</span>
                                 <span>Специалист по личной охране с многолетним стажем работы в спецподразделениях. Отличается быстрой реакцией и стратегическим мышлением. Имеет международные сертификаты по защите VIP-персон.</span>
@@ -153,8 +154,8 @@
                         <div class="card-element">
                             <div class="card-element-width">
                                 <div class="expert_acatar">
-                                <img src="assets/3 avatar.jpg"
-                                    alt="Карточка" />
+                                    <img src="assets/3 avatar.jpg"
+                                        alt="Карточка" />
                                 </div>
                                 <span>Август Еговцев</span>
                                 <span>Эксперт по техническим системам безопасности, профессионально владеет современными средствами видеонаблюдения и сигнализации. Имеет сертификаты
@@ -228,36 +229,12 @@
             </div>
         </section>
     </main>
-    <?include('patch/footer.php');?>
+    <? include('patch/footer.php'); ?>
     <!-- <script src="./js/jquery-3.7.1.min.js"></script> -->
-    <script src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"
         type="text/javascript"></script>
-    <script src="slick-rep/slick/slick.js" type="text/javascript"
-        charset="utf-8"></script>
-    <script>
-        $(document).on('ready', function() {
-            if ($(window).width() < 991) {
-                $(".vertical-center-4").slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 1300,
-                    arrow: false,
-                    nextArrow: false,
-                    prevArrow: false,
-                });
-            } else {
-                $(".vertical-center-4").slick({
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 1300,
-                    nextArrow: false,
-                    prevArrow: false,
-                });
-            }
-        });
-    </script>
+    <script src="slick-rep/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,8 +9,9 @@
     <link rel="icon" href="assets/logo.svg">
     <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
-<?include('patch/header.php');?>
+    <? include('patch/header.php'); ?>
     <main>
         <section id="servis">
             <div class="container">
@@ -141,8 +142,9 @@
             </div>
         </section>
     </main>
-    <?include('patch/footer.php');?>
+    <? include('patch/footer.php'); ?>
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
