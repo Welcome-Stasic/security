@@ -36,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt->bind_param('ssss', $username, $passwordHash, $email, $create_at);
                     if ($stmt->execute()) {
                         $alert_succes = true;
+                        setcookie('username', $username, time() + (86400 * 30));
+                        setcookie('useremail', $email, time() + (86400 * 30));
                         $_SESSION['auth'] = true;
                     } else {
                         $alert_db = true;

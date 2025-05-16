@@ -3,11 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 ul {
   list-style: none;
 }
-body {
-  font-family: Arial, Helvetica, sans-serif;
+section, header, footer {
+  padding-top: 50px;
+  align-items: center;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: #1c1b1b;
 }
 a {
   font-size: 24px;
@@ -52,16 +60,13 @@ a:hover {
 }
 .container {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1440px;
   padding: 0px 21px;
 }
 /* Шапка */
 header {
   width: 100%;
   height: 80px;
-  background-color: #1c1b1b;
-  display: flex;
-  justify-content: center;
 }
 .content-header {
   display: flex;
@@ -117,7 +122,7 @@ header .menu ul {
 }
 @media (max-width: 991px) {
   header .menu ul li a {
-    font-size: 24px;
+    font-size: 18px;
   }
 }
 @media (max-width: 786px) {
@@ -180,8 +185,7 @@ header .menu ul {
 }
 /* 1 секция */
 #main {
-  display: flex;
-  justify-content: center;
+  align-items: start;
   width: 100%;
   height: 816px;
   background-image: linear-gradient(
@@ -256,11 +260,7 @@ header .menu ul {
 /* 2 секция */
 #product {
   padding-top: 100px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
   padding-bottom: 50px;
-  background-color: #1c1b1b;
 }
 .content_product {
   width: 100%;
@@ -346,9 +346,6 @@ header .menu ul {
 #services {
   padding-top: 50px;
   padding-bottom: 50px;
-  display: flex;
-  justify-content: center;
-  background-color: #1c1b1b;
 }
 .service_card {
   display: flex;
@@ -391,16 +388,9 @@ header .menu ul {
   gap: 20px;
 }
 /* Форма */
-#form {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  display: flex;
-  justify-content: center;
-  background-color: #1c1b1b;
-}
 .content-form {
-  margin-top: 50px;
   display: flex;
+  margin-top: 50px;
   justify-content: space-between;
 }
 .content-form_left {
@@ -507,6 +497,7 @@ header .menu ul {
     width: 100%;
 }
   .content-form {
+    display: flex;
     flex-direction: column;
   }
   .content-form_left {
@@ -626,10 +617,10 @@ footer ul:last-child {
 }
 @media (max-width: 798px) {
   footer form input[type="email"] {
-    width: 222px;
+    width: 180px;
   }
   footer form input[type="submit"] {
-    width: 120px;
+    width: 100px;
   }
   .link_img img {
     width: 10px;
@@ -651,10 +642,10 @@ footer ul:last-child {
     margin-top: 80px;
   }
   footer ul li a {
-    font-size: 18px;
+    font-size: 15px;
   }
   footer ul li {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 /* Experts */
@@ -789,4 +780,19 @@ footer ul:last-child {
   left: 12;
   top: -12px; 
 }
-
+/* Личный кабинет */
+#lk {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #1c1b1b;
+}
+.rigth_btn {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.personal_info {
+  margin-top: 40px;
+}
