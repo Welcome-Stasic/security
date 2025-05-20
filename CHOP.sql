@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `services` (
   `id_servis` int NOT NULL,
-  `img` blob NOT NULL,
+  `img` longblob NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` int NOT NULL
