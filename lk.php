@@ -1,49 +1,46 @@
+<? session_start() ?>
 <?php
-require('application/db.php');
-$servis = $conn->prepare("SELECT `img`, `name`, `description` FROM `services`");
-$servis->execute();
-$result = $servis->get_result();
+if (!isset($_SESSION['auth'])) {
+    header('Location: index.php');
+}
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Охранное агенство</title>
-    <link rel="icon" href="assets/logo.svg">
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <? include('patch/header.php'); ?>
     <main>
-        <section id="servis">
+        <section id="lk">
             <div class="container">
-                <?while($services = $result->fetch_assoc()):?>
-                    <?if ($services):?>
-                    <div class="service_card-elem">
-                        <div class="content-card">
-                            <img src="<?=$services['img']?>" alt="Услуга"/>
-                            <div class="card-description">
-                                <span><?=$services['name']?></span>
-                                <span style="font-size: 18px"><?=$services['description']?></span>
-                            </div>
-                        </div>
-                        <button>Подробнее</button>
-                    </div>
-                    <?else:?>
-                        <div class="error-content">
-                            <span>В данный момент услуг нет...</span>
-                        </div>
-                    <?endif;?>
-                <?endwhile;?>
+                <div class="rigth_btn">
+                    <a href="application/out.php">
+                        <div class="button_exit">Выйти</div>
+                    </a>
+                </div>
+                <div class="personal_info">
+                    <span>Ваш логин: <?= $_COOKIE['username']; ?></span><br>
+                    <span class="pt-4">Ваша почта: <?= $_COOKIE['useremail']; ?></span><br>
+                    <? if ($_SESSION['admin'] === '1'): ?>
+                        <span style="background-color:black; border-radius: 5px; padding: 5px;">Вы админ</span>
+                    <? endif; ?>
+                </div>
+                <div class="link-nav" style="padding-top: 30px;">
+                    <? if ($_SESSION['admin'] === '1'): ?>
+                        <a href="add-servis.php">Добавить услугу</a><br><br>
+                        <a href="data-subscribe.php">Пользователи с подпиской</a><br><br>
+                    <? endif; ?>
+
+                    <a href="calc.php">Расчитать стоимость</a>
+                </div>
+            </div>
         </section>
     </main>
-    <?include('patch/footer.php');?>
-    <script src="js/script.js"></script>
+    <? include('patch/footer.php'); ?>
+
 </body>
+<script src="js/script.js"></script>
 
 </html>

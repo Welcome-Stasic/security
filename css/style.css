@@ -708,21 +708,22 @@ footer ul:last-child {
 }
 #servis .container {
   display: flex;
-  justify-content: space-between;
   row-gap: 100px;
+  justify-content: space-between;
+  gap: 12px;
   flex-wrap: wrap;
 }
 #servis .service_card-elem {
   border: 2px solid white;
   border-radius: 20px;
-  width: 457px;
+  max-width: 452px;
   padding: 25px;
   display: flex;
   padding: 25px;
   flex-direction: column;
   align-items: center;
 }
-#servis .service_card-element img {
+#servis .service_card-elem img {
   width: 408px;
   height: 254px;
   border-radius: 20px;
@@ -731,13 +732,10 @@ footer ul:last-child {
   margin-top: 40px;
 }
 @media (max-width: 991px) {
-  #servis .service_card-element img {
-    width: 312px;
+  #servis .service_card-elem img {
+    width: 289px;
     height: 201px;
     border-radius: 20px;
-  }
-  #servis .service_card-elem {
-    width: 100%;
   }
   
 }
@@ -830,4 +828,79 @@ td {
   height: 60px;
   padding-top: 17px;
 }
+/* 404 */
+#container {
+  width: 600px;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.line {
+  fill: none;
+  stroke: #f5eded;
+  stroke-width: 12;
+  stroke-dasharray: 200 100;
+}
+
+.anim {
+  -webkit-animation: swirls 2s linear infinite;
+  -moz-animation: swirls 2s linear infinite;
+  -o-animation: swirls 2s linear infinite;
+  animation: swirls 2s linear infinite;
+}
+#error {
+  height: 433px;
+}
+.content-error {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.error-text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+@media (max-width: 991px) {
+  #error {
+  height: 483px;
+}
+  .content-error {
+  align-items: center;
+}
+  .error-text {
+  align-items: center;
+}
+  #container {
+  width: 400px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+}
+@media (max-width: 771px) {
+    #error {
+  height: 480px;
+}
+  #container {
+  width: 200px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+}
+@keyframes swirls {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 300;
+  }
+}
+
 

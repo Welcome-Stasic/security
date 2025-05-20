@@ -1,59 +1,57 @@
-<?
+<?php
 require('application/db.php');
-if ($_SESSION['admin'] === '0') {
-    header('Location: lk.php');
-}
-$file = false;
 $name = false;
-$descript = false;
-$alert_succes = false;
-$alert_name = false;
-$alert_email = false;
+$description = false;
+$imageData = false;
+$file = false;
+$alert_success = false;
 $alert_db = false;
-$price = 0;
 $alert_empty = false;
+$price = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $file = isset($_POST['file']) ? $conn->real_escape_string(trim($_POST['file'])) : null;
     $name = isset($_POST['name']) ? $conn->real_escape_string(trim($_POST['name'])) : null;
-    $descript = isset($_POST['descript']) ? $conn->real_escape_string(trim($_POST['descript'])) : null;
-    if ($file && $name && $descript) {
-        $check_name = $conn->prepare("SELECT * FROM services WHERE name = ?");
-        $check_name->bind_param('s', $name);
-        $check_name->execute();
-        $result = $check_name->get_result();
-        if ($result->num_rows != 0) {
-            $check_name = $conn->prepare("INSERT INTO services (img, name, description, price) VALUE (?,?,?,?)");
-            $check_name->bind_param('sssi', $file, $name, $descript, $price);
-            if ($check_name->execute()) {
-                $alert_succes = true;
+    $description = isset($_POST['descript']) ? $conn->real_escape_string(trim($_POST['descript'])) : null;
+    $price = isset($_POST['price']) ? $conn->real_escape_string(trim($_POST['price'])) : null;
+    if ($name && $description) {
+        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $imageData = file_get_contents($_FILES['file']['tmp_name']);
+            $stmt = $conn->prepare("INSERT INTO services (img, name, description, price) VALUES (?, ?, ?, ?)");
+            $empty = '';
+            $stmt->bind_param("bssi", $empty, $name, $description, $price);
+            $stmt->send_long_data(0, $imageData);
+            if ($stmt->execute()) {
+                $alert_success = true;
             } else {
                 $alert_db = true;
             }
+            $stmt->close();
         } else {
-            $alert_name = true;
+            $alert_empty = true;
         }
     } else {
         $alert_empty = true;
     }
 }
-
 ?>
+
 <html>
-    <head>
-        <link rel="icon" href="assets/logo.svg">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-    <?include('patch/header.php');?>
-        <main>
-            <section>
-                <div class="container" style="display: flex; flex-direction: column; width: 100%; align-items: center;" >
-                    <h1 style="margin-bottom: 60px;">Добавить услугу</h1>
-                    <form action="#" method="POST">
+
+<head>
+    <link rel="icon" href="assets/logo.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <? include('patch/header.php'); ?>
+    <main>
+        <section>
+            <div class="container" style="display: flex; flex-direction: column; width: 100%; align-items: center;">
+                <h1 style="margin-bottom: 60px;">Добавить услугу</h1>
+                <form action="#" method="POST" enctype="multipart/form-data">
                     <div class="label-content">
                         <label for="file">Фотография</label>
-                        <input class="input add" type="file" name="file">
+                        <input class="input add" type="file" name="file" required />
                         <?php if ($file === null) {
                             echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 65px;'>Выберите файл</span><br>";
                         }
@@ -70,16 +68,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="label-content">
                         <label for="descript">Описание</label>
                         <textarea name="descript"></textarea>
-                        <?php if ($descript === null) {
+                        <?php if ($description === null) {
+                            echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 253px;'>Заполните поле</span><br>";
+                        }
+                        ?>
+                    </div>
+                    <div class="label-content">
+                        <label for="price">Цена</label>
+                        <input class="input" type="number" name="price">
+                        <?php if ($price === null) {
                             echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 253px;'>Заполните поле</span><br>";
                         }
                         ?>
                     </div>
                     <button>Добавить</button>
                 </form>
-                </div>
-            </section>
-        </main>
-        <?include('patch/footer.php');?>   
-    </body>
+            </div>
+        </section>
+    </main>
+    <? include('patch/footer.php'); ?>
+    <script src="js/script.js"></script>
+</body>
+<? if ($alert_succes === true) {
+    echo "
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Вы успешно добавили услугу!',
+                });
+            </script>";
+}
+if ($alert_db === true) {
+    echo "<script>
+       Swal.fire({
+        icon: 'error',
+        title: 'Ошибка при выполнении запроса',
+        });
+       </script>";
+}
+if ($alert_empty === true) {
+    echo "<script>
+       Swal.fire({
+        icon: 'error',
+        title: 'Заполните все поля',
+        });
+       </script>";
+}
+?>
+
 </html>

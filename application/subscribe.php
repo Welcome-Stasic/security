@@ -5,6 +5,7 @@ $alert_sub = false;
 $alert_db = false;
 $alert_email = false;
 $alert_empty = false;
+$_SESSION['auth'] = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email_sub = !empty($_POST['email_sub']) ? $conn->real_escape_string(trim($_POST['email_sub'])) : null;
     if ($email_sub != false) {
@@ -20,15 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $alert_db = true;
             }
-
         } else {
             $alert_email = true;
         }
-
     } else {
         $alert_empty = true;
     }
-
 }
-
-?>
