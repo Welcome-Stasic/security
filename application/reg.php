@@ -35,13 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt = $conn->prepare("INSERT INTO users (name, password, email, create_at) VALUES (?,?,?,?)");
                     $stmt->bind_param('ssss', $username, $passwordHash, $email, $create_at);
                     if ($stmt->execute()) {
+                        $user = $res_check_name->fetch_assoc();
                         $alert_succes = true;
-                        setcookie('username', $username, time() + (86400 * 30));
-                        setcookie('useremail', $email, time() + (86400 * 30));
+                        setcookie('username', $username, time() + (86400 * 30), '/');
+                        setcookie('useremail', $email, time() + (86400 * 30), '/');
                         $_SESSION['auth'] = true;
+                        $_SESSION['username'] = $user['name'];
                     } else {
                         $alert_db = true;
-                        error_log("Ошибка MySQL: " . $stmt->error);
                     }
                 } else {
                     $alert_email = true;

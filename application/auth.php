@@ -24,8 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (password_verify($password, $user['password'])) {
                 $alert_succes = true;
                 $_SESSION['auth'] = true;
-                setcookie('username', $username, time() + (86400 * 30));
-                setcookie('useremail', $user['email'], time() + (86400 * 30));
+                $_SESSION['admin'] = $user['admin'];
+                setcookie('username', $username, time() + (86400 * 30), '/');
+                setcookie('useremail', $user['email'], time() + (86400 * 30), '/');
             } else {
                 $alert_password = true;
             }
