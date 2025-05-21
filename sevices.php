@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('application/db.php');
 $servis = $conn->prepare("SELECT img, name, description FROM services");
 $servis->execute();
@@ -9,6 +10,7 @@ $result = $servis->get_result();
 <html lang="ru">
 
 <head>
+<link rel="icon" href="assets/logo.svg">
     <meta charset="UTF-8">
     <title>Услуги</title>
     <link rel="stylesheet" href="css/style.css">

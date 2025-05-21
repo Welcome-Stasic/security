@@ -12,6 +12,7 @@ $alert_db = false;
 $alert_empty = false;
 $alert_password = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['auth'] = false;
     $username = !empty($_POST['username']) ? $conn->real_escape_string(trim($_POST['username'])) : null;
     $password = !empty($_POST['password']) ? $conn->real_escape_string(trim($_POST['password'])) : null;
     $email = !empty($_POST['email']) ? $conn->real_escape_string(trim($_POST['email'])) : null;
@@ -59,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 
 <head>
-    <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>

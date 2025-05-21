@@ -1,6 +1,8 @@
-	<html>
+<?session_start();?>
+<html>
 
 	<head>
+	<link rel="icon" href="assets/logo.svg">
 	    <title>Ошибка 404</title>
 	    <link rel="stylesheet" href="css/style.css">
 	</head>
@@ -25,7 +27,7 @@
 	            <div class="content-error">
 	                <div class="error-text">
 	                    <h1>К сожаления страница не найдена</h1><br><br>
-	                    <a href="#">Главная</a>
+	                    <a href="index.php">Главная</a>
 	                </div>
 	            </div>
 	        </div>

@@ -7,6 +7,7 @@ if (!isset($_SESSION['auth'])) {
 <html>
 
 <head>
+<link rel="icon" href="assets/logo.svg">
     <link rel="stylesheet" href="css/style.css">
 </head>
 

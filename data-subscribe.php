@@ -1,7 +1,9 @@
 <?
+session_start();
 require('application/db.php');
-if ($_SESSION['admin'] === '0') {
+if ($_SESSION['admin'] === '0' || !isset($_SESSION['auth'])) {
     header('Location: lk.php');
+    exit;
 }
 $users_sub = $conn->prepare("SELECT `id`, `email` FROM `subscribe_user`");
 $users_sub->execute();

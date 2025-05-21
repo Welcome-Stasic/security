@@ -1,5 +1,10 @@
 <?php
+session_start();
 require('application/db.php');
+if ($_SESSION['admin'] === '0' || !isset($_SESSION['auth'])) {
+    header('Location: lk.php');
+    exit;
+}
 $name = false;
 $description = false;
 $imageData = false;
@@ -21,16 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("bssi", $empty, $name, $description, $price);
             $stmt->send_long_data(0, $imageData);
             if ($stmt->execute()) {
-                $alert_success = true;
+                $alert_s = true;
             } else {
-                $alert_db = true;
+                $a_db = true;
             }
             $stmt->close();
         } else {
-            $alert_empty = true;
+            $a_empty = true;
         }
     } else {
-        $alert_empty = true;
+        $a_empty = true;
     }
 }
 ?>
@@ -81,7 +86,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
                         ?>
                     </div>
+                    <div class="label-content">
                     <button>Добавить</button>
+                    <?php if ($alert_s === true) {
+                            echo "<span style='color: green; font-size: 12px; position: absolute; left: 0; top: 53px;'>Успешно загрузили!</span><br>";
+                        }
+                    ?>
+                    <?php if ($a_db === true) {
+                            echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 53px;'>Ошибка при выполнении запроса!</span><br>";
+                        }
+                    ?>
+                    <?php if ($a_empty === true) {
+                            echo "<span style='color: red; font-size: 12px; position: absolute; left: 0; top: 53px;'>Заполните поля!</span><br>";
+                        }
+                    ?>
+                    </div>
                 </form>
             </div>
         </section>
@@ -89,31 +108,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <? include('patch/footer.php'); ?>
     <script src="js/script.js"></script>
 </body>
-<? if ($alert_succes === true) {
-    echo "
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Вы успешно добавили услугу!',
-                });
-            </script>";
-}
-if ($alert_db === true) {
-    echo "<script>
-       Swal.fire({
-        icon: 'error',
-        title: 'Ошибка при выполнении запроса',
-        });
-       </script>";
-}
-if ($alert_empty === true) {
-    echo "<script>
-       Swal.fire({
-        icon: 'error',
-        title: 'Заполните все поля',
-        });
-       </script>";
-}
-?>
 
 </html>

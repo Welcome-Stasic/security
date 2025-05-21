@@ -10,7 +10,7 @@
                     <li><a href="about.php">О нас</a></li>
                     <li><a href="contact.php">Связаться</a></li>
                     <li><a href="blog.php">Блог</a></li>
-                    <? if (isset($_SESSION['auth'])): ?>
+                    <? if ($_SESSION['auth'] === true): ?>
                         <li><a href="lk.php">Личный кабинет</a></li>
                     <? else: ?>
                         <li><a href="application/auth.php">Войти</a></li>
