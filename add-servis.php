@@ -15,6 +15,7 @@ $alert_empty = false;
 $price = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['auth'] = false;
     $name = isset($_POST['name']) ? $conn->real_escape_string(trim($_POST['name'])) : null;
     $description = isset($_POST['descript']) ? $conn->real_escape_string(trim($_POST['descript'])) : null;
     $price = isset($_POST['price']) ? $conn->real_escape_string(trim($_POST['price'])) : null;
@@ -26,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("bssi", $empty, $name, $description, $price);
             $stmt->send_long_data(0, $imageData);
             if ($stmt->execute()) {
+                $_SESSION['auth'] = true;
                 $alert_s = true;
             } else {
                 $a_db = true;

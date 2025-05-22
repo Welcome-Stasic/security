@@ -34,6 +34,7 @@
 	    </section>
 	    <? include('patch/footer.php');
         ?>
+		<script src="https://app.allwidgets.ru/s/callback/f89d47f8-e5d2-4d55-9775-ebd122fc84f5/"></script>
 	    <script src="js/script.js"></script>
 	</body>
 

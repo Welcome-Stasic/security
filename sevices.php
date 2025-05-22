@@ -35,7 +35,7 @@ $result = $servis->get_result();
                                     <span style="font-size: 18px"><?= htmlspecialchars($services['description']) ?></span>
                                 </div>
                             </div>
-                            <button>Подробнее</button>
+                            <button>Связаться</button>
                         </div>
                     <? else: ?>
                         <h1>К сожаление услуг в данный момент нет</h1>
@@ -45,6 +45,7 @@ $result = $servis->get_result();
         </section>
     </main>
     <? include('patch/footer.php'); ?>
+    <script src="https://app.allwidgets.ru/s/callback/f89d47f8-e5d2-4d55-9775-ebd122fc84f5/"></script>
     <script src="js/script.js"></script>
 </body>
 

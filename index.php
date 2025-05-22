@@ -237,7 +237,7 @@
         </section>
     </main>
     <? include('patch/footer.php'); ?>
-
+    <script src="https://app.allwidgets.ru/s/callback/f89d47f8-e5d2-4d55-9775-ebd122fc84f5/"></script>
     <!-- <script src="./js/jquery-3.7.1.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"
         type="text/javascript"></script>
