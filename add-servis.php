@@ -15,7 +15,6 @@ $alert_empty = false;
 $price = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['auth'] = false;
     $name = isset($_POST['name']) ? $conn->real_escape_string(trim($_POST['name'])) : null;
     $description = isset($_POST['descript']) ? $conn->real_escape_string(trim($_POST['descript'])) : null;
     $price = isset($_POST['price']) ? $conn->real_escape_string(trim($_POST['price'])) : null;

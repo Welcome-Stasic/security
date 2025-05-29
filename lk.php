@@ -34,7 +34,7 @@ if (!isset($_SESSION['auth'])) {
                         <a href="data-subscribe.php">Пользователи с подпиской</a><br><br>
                     <? endif; ?>
 
-                    <a href="calc.php">Расчитать стоимость</a>
+                    <a href="calc.php">Рассчитать стоимость</a>
                 </div>
             </div>
         </section>

@@ -32,6 +32,7 @@
                     <li><a href="about.php">Наша команда</a></li>
                 </ul>
             </div>
+            <div class="footer-content-wrapper">
             <div class="footer-down_content">
                 <form action="#" id="form" method="POST" style="position: relative;">
                     <input type="email" placeholder="E-mail" name="email_sub">
@@ -49,6 +50,12 @@
                         echo "<span style='color: red; font-size: 12px; position: absolute; left: 5px; top: 50px;'>Ошибка при выполнении запроса</span><br>";
                     } ?>
                 </form>
+                <div class="content_confirm">
+                    <span>
+                        Нажиманя кнопку "Отправить" вы соглашаетесь с условиями <a href="confirm_user.php">пользовательского соглашения</a>
+                    </span>
+                </div>
+            </div>
             </div>
         </div>
     </div>

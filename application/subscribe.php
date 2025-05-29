@@ -7,7 +7,6 @@ $alert_db = false;
 $alert_email = false;
 $alert_empty = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['auth'] = false;
     $email_sub = !empty($_POST['email_sub']) ? $conn->real_escape_string(trim($_POST['email_sub'])) : null;
     if ($email_sub != false) {
         $check_email = $conn->prepare("SELECT * FROM `subscribe_user` WHERE email = ?");

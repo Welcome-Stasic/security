@@ -83,7 +83,7 @@ if ($name && $period && $child) {
         <main>
             <section id="calculate">
                 <div class="container">
-                    <h1 style="margin-bottom: 20px;">Расчитать стоимость</h1>
+                    <h1 style="margin-bottom: 20px;">Рассчитать стоимость</h1>
                 <form action="#" method="GET">
                     <div class="label-content">
                         <label>Услуга</label>

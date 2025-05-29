@@ -12,7 +12,6 @@ $alert_db = false;
 $alert_empty = false;
 $alert_password = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['auth'] = false;
     $username = !empty($_POST['username']) ? $conn->real_escape_string(trim($_POST['username'])) : null;
     $password = !empty($_POST['password']) ? $conn->real_escape_string(trim($_POST['password'])) : null;
     if ($username && $password) {
